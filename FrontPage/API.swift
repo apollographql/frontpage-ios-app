@@ -82,6 +82,7 @@ public struct PostDetails: GraphQLNamedFragment {
   public static let fragmentDefinition =
     "fragment PostDetails on Post {" +
     "  id" +
+    "  title" +
     "  votes" +
     "  author {" +
     "    firstName" +
@@ -93,11 +94,13 @@ public struct PostDetails: GraphQLNamedFragment {
 
   public let __typename = "Post"
   public let id: Int
+  public let title: String?
   public let votes: Int?
   public let author: Author?
 
   public init(map: GraphQLMap) throws {
     id = try map.value(forKey: "id")
+    title = try map.optionalValue(forKey: "title")
     votes = try map.optionalValue(forKey: "votes")
     author = try map.optionalValue(forKey: "author")
   }

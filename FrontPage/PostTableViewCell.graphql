@@ -1,6 +1,6 @@
 fragment PostDetails on Post {
   id
-  # title
+  title
   votes
   author {
     firstName
