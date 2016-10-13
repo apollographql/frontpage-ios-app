@@ -1,0 +1,3 @@
+[submodule "Carthage/Checkouts/apollo-ios"]
+	path = Carthage/Checkouts/apollo-ios
+	url = https://github.com/apollostack/apollo-ios.git
