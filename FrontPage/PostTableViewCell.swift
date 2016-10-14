@@ -8,37 +8,27 @@ class PostTableViewCell: UITableViewCell {
   @IBOutlet weak var bylineLabel: UILabel!
   @IBOutlet weak var votesLabel: UILabel!
 
-  func configure(with post: PostDetails) {
-    postId = post.id
+  func configure(with post: PostDetails?) {
+    postId = post?.id
 
-    titleLabel?.text = post.title
+    titleLabel?.text = post?.title
     bylineLabel?.text = byline(for: post)
-    votesLabel?.text = "\(post.votes ?? 0) votes"
+    votesLabel?.text = "\(post?.votes ?? 0) votes"
   }
 
   @IBAction func upvote() {
     guard let postId = postId else { return }
 
     apollo.perform(mutation: UpvotePostMutation(postId: postId)) { (result, error) in
-      if let error = error {
-        NSLog("Error while attempting to upvote post: \(error.localizedDescription)")
-        return
-      }
-
-      guard let upvotePost = result?.data?.upvotePost else {
-        NSLog("Missing result after upvoting post")
-        return
-      }
-
-      self.configure(with: upvotePost.fragments.postDetails)
+      self.configure(with: result?.data?.upvotePost?.fragments.postDetails)
     }
   }
 }
 
 // We can define helper methods that take the generated data types as arguments
 
-func byline(for post: PostDetails) -> String? {
-  if let author = post.author {
+func byline(for post: PostDetails?) -> String? {
+  if let author = post?.author {
     return "by \(author.fullName)"
   } else {
     return nil

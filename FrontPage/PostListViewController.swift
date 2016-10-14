@@ -27,11 +27,6 @@ class PostListViewController: UITableViewController {
 
   func loadData() {
     apollo.fetch(query: AllPostsQuery()) { (result, error) in
-      if let error = error {
-        NSLog("Error while fetching query: \(error.localizedDescription)")
-        return
-      }
-
       self.posts = result?.data?.posts
     }
   }
@@ -43,15 +38,11 @@ class PostListViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? PostTableViewCell else {
-      fatalError("Could not dequeue PostTableViewCell")
-    }
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
 
-    guard let post = posts?[indexPath.row] else {
-      fatalError("Could not find post at row \(indexPath.row)")
-    }
+    let post = posts?[indexPath.row]
 
-    cell.configure(with: post.fragments.postDetails)
+    cell.configure(with: post?.fragments.postDetails)
 
     return cell
   }
