@@ -11,14 +11,14 @@ public final class AllPostsQuery: GraphQLQuery {
     "}"
   public static let queryDocument = operationDefinition.appending(PostDetails.fragmentDefinition)
 
-  public struct Data: GraphQLMapConvertible {
+  public struct Data: GraphQLMapDecodable {
     public let posts: [Post]
 
     public init(map: GraphQLMap) throws {
       posts = try map.list(forKey: "posts")
     }
 
-    public struct Post: GraphQLMapConvertible {
+    public struct Post: GraphQLMapDecodable {
       public let __typename = "Post"
 
       public let fragments: Fragments
@@ -54,14 +54,14 @@ public final class UpvotePostMutation: GraphQLMutation {
     return ["postId": postId]
   }
 
-  public struct Data: GraphQLMapConvertible {
+  public struct Data: GraphQLMapDecodable {
     public let upvotePost: UpvotePost?
 
     public init(map: GraphQLMap) throws {
       upvotePost = try map.optionalValue(forKey: "upvotePost")
     }
 
-    public struct UpvotePost: GraphQLMapConvertible {
+    public struct UpvotePost: GraphQLMapDecodable {
       public let __typename = "Post"
 
       public let fragments: Fragments
@@ -105,7 +105,7 @@ public struct PostDetails: GraphQLNamedFragment {
     author = try map.optionalValue(forKey: "author")
   }
 
-  public struct Author: GraphQLMapConvertible {
+  public struct Author: GraphQLMapDecodable {
     public let __typename = "Author"
     public let firstName: String?
     public let lastName: String?
