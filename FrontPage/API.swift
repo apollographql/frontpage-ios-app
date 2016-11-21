@@ -11,20 +11,20 @@ public final class AllPostsQuery: GraphQLQuery {
     "}"
   public static let queryDocument = operationDefinition.appending(PostDetails.fragmentDefinition)
 
-  public struct Data: GraphQLMapDecodable {
+  public struct Data: GraphQLMappable {
     public let posts: [Post]
 
-    public init(map: GraphQLMap) throws {
-      posts = try map.list(forKey: "posts")
+    public init(reader: GraphQLResultReader) throws {
+      posts = try reader.list(for: Field(responseName: "posts"))
     }
 
-    public struct Post: GraphQLMapDecodable {
+    public struct Post: GraphQLMappable {
       public let __typename = "Post"
 
       public let fragments: Fragments
 
-      public init(map: GraphQLMap) throws {
-        let postDetails = try PostDetails(map: map)
+      public init(reader: GraphQLResultReader) throws {
+        let postDetails = try PostDetails(reader: reader)
         fragments = Fragments(postDetails: postDetails)
       }
 
@@ -54,20 +54,20 @@ public final class UpvotePostMutation: GraphQLMutation {
     return ["postId": postId]
   }
 
-  public struct Data: GraphQLMapDecodable {
+  public struct Data: GraphQLMappable {
     public let upvotePost: UpvotePost?
 
-    public init(map: GraphQLMap) throws {
-      upvotePost = try map.optionalValue(forKey: "upvotePost")
+    public init(reader: GraphQLResultReader) throws {
+      upvotePost = try reader.optionalValue(for: Field(responseName: "upvotePost"))
     }
 
-    public struct UpvotePost: GraphQLMapDecodable {
+    public struct UpvotePost: GraphQLMappable {
       public let __typename = "Post"
 
       public let fragments: Fragments
 
-      public init(map: GraphQLMap) throws {
-        let postDetails = try PostDetails(map: map)
+      public init(reader: GraphQLResultReader) throws {
+        let postDetails = try PostDetails(reader: reader)
         fragments = Fragments(postDetails: postDetails)
       }
 
@@ -98,21 +98,21 @@ public struct PostDetails: GraphQLNamedFragment {
   public let votes: Int?
   public let author: Author?
 
-  public init(map: GraphQLMap) throws {
-    id = try map.value(forKey: "id")
-    title = try map.optionalValue(forKey: "title")
-    votes = try map.optionalValue(forKey: "votes")
-    author = try map.optionalValue(forKey: "author")
+  public init(reader: GraphQLResultReader) throws {
+    id = try reader.value(for: Field(responseName: "id"))
+    title = try reader.optionalValue(for: Field(responseName: "title"))
+    votes = try reader.optionalValue(for: Field(responseName: "votes"))
+    author = try reader.optionalValue(for: Field(responseName: "author"))
   }
 
-  public struct Author: GraphQLMapDecodable {
+  public struct Author: GraphQLMappable {
     public let __typename = "Author"
     public let firstName: String?
     public let lastName: String?
 
-    public init(map: GraphQLMap) throws {
-      firstName = try map.optionalValue(forKey: "firstName")
-      lastName = try map.optionalValue(forKey: "lastName")
+    public init(reader: GraphQLResultReader) throws {
+      firstName = try reader.optionalValue(for: Field(responseName: "firstName"))
+      lastName = try reader.optionalValue(for: Field(responseName: "lastName"))
     }
   }
 }
