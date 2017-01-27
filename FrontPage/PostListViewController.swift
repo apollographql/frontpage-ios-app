@@ -24,9 +24,11 @@ class PostListViewController: UITableViewController {
   }
 
   // MARK: - Data loading
+  
+  var watcher: GraphQLQueryWatcher<AllPostsQuery>?
 
   func loadData() {
-    apollo.fetch(query: AllPostsQuery()) { (result, error) in
+    watcher = apollo.watch(query: AllPostsQuery()) { (result, error) in
       if let error = error {
         NSLog("Error while fetching query: \(error.localizedDescription)")
         return

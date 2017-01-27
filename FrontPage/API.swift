@@ -10,6 +10,8 @@ public final class AllPostsQuery: GraphQLQuery {
     "  }" +
     "}"
   public static let queryDocument = operationDefinition.appending(PostDetails.fragmentDefinition)
+  public init() {
+  }
 
   public struct Data: GraphQLMappable {
     public let posts: [Post]
@@ -58,7 +60,7 @@ public final class UpvotePostMutation: GraphQLMutation {
     public let upvotePost: UpvotePost?
 
     public init(reader: GraphQLResultReader) throws {
-      upvotePost = try reader.optionalValue(for: Field(responseName: "upvotePost"))
+      upvotePost = try reader.optionalValue(for: Field(responseName: "upvotePost", arguments: ["postId": reader.variables["postId"]]))
     }
 
     public struct UpvotePost: GraphQLMappable {
