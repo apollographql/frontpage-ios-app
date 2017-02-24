@@ -9,7 +9,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    apollo.cacheKeyForObject = { $0["id"] }
+    apollo.cacheKeyForObject = { obj in
+      guard let typeName = obj["__typename"], let id = obj["id"] else {
+        return nil
+      }
+      return "\(String(describing: typeName))_\(String(describing: id))"
+    }
     return true
   }
 }
