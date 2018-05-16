@@ -9,12 +9,12 @@ This project requires the latest version of Xcode, which you can install from th
 To clone the Git repository to your local machine, including submodules:
 
 ```sh
-git clone --recursive https://github.com/apollostack/frontpage-ios-app.git
+git clone --recursive https://github.com/apollographql/frontpage-ios-app.git
 ```
 
 ### Server
 
-This app talks to the frontpage example server, available here: https://github.com/apollostack/frontpage-server. Follow the instructions there and start the server before running the iOS app. (You can find the equivalent React app [here](https://github.com/apollostack/frontpage-react-app) if you want to run them side by side.)
+This app talks to the frontpage example server, available here: https://github.com/apollographql/frontpage-server. Follow the instructions there and start the server before running the iOS app. (You can find the equivalent React app [here](https://github.com/apollographql/frontpage-react-app) if you want to run them side by side.)
 
 ## Starting the app
 
