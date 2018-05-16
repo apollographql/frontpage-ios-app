@@ -1,21 +1,15 @@
 # Apollo iOS Hello World app
 
-This is the simple example Apollo iOS app that lives at dev.apollodata.com.
+This is a simple example Apollo iOS app.
 
 ## Installation
 
-This project requires Xcode 8, which you can install from the [Mac App Store](https://itunes.apple.com/en/app/xcode/id497799835?mt=12).
+This project requires the latest version of Xcode, which you can install from the [Mac App Store](https://itunes.apple.com/en/app/xcode/id497799835?mt=12).
 
 To clone the Git repository to your local machine, including submodules:
 
 ```sh
 git clone --recursive https://github.com/apollostack/frontpage-ios-app.git
-```
-
-You will also have to install the `apollo-codegen` command globally through npm:
-
-```sh
-npm install -g apollo-codegen
 ```
 
 ### Server

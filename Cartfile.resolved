@@ -1,1 +1,2 @@
-github "apollostack/apollo-ios" "0.5.1"
+github "apollostack/apollo-ios" "0.8.0"
+github "stephencelis/SQLite.swift" "0.11.5"

@@ -41,6 +41,6 @@ func byline(for post: PostDetails) -> String? {
 
 extension PostDetails.Author {
   var fullName: String {
-    return [firstName, lastName].flatMap { $0 }.joined(separator: " ")
+    return [firstName, lastName].compactMap { $0 }.joined(separator: " ")
   }
 }
