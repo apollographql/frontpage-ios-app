@@ -178,9 +178,7 @@ public final class AllPostsQuery: GraphQLQuery {
 
 public final class UpvotePostMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpvotePost($postId: Int!) {\n  upvotePost(postId: $postId) {\n    __typename\n    ...PostDetails\n  }\n}"
-
-  public static var requestString: String { return operationString.appending(PostDetails.fragmentString) }
+    "mutation UpvotePost($postId: Int!) {\n  upvotePost(postId: $postId) {\n    __typename\n    id\n    votes\n  }\n}"
 
   public var postId: Int
 
@@ -223,11 +221,8 @@ public final class UpvotePostMutation: GraphQLMutation {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("title", type: .scalar(String.self)),
         GraphQLField("votes", type: .scalar(Int.self)),
-        GraphQLField("author", type: .object(Author.selections)),
       ]
 
       public var snapshot: Snapshot
@@ -236,8 +231,8 @@ public final class UpvotePostMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: Int, title: String? = nil, votes: Int? = nil, author: Author? = nil) {
-        self.init(snapshot: ["__typename": "Post", "id": id, "title": title, "votes": votes, "author": author.flatMap { (value: Author) -> Snapshot in value.snapshot }])
+      public init(id: Int, votes: Int? = nil) {
+        self.init(snapshot: ["__typename": "Post", "id": id, "votes": votes])
       }
 
       public var __typename: String {
@@ -258,99 +253,12 @@ public final class UpvotePostMutation: GraphQLMutation {
         }
       }
 
-      public var title: String? {
-        get {
-          return snapshot["title"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "title")
-        }
-      }
-
       public var votes: Int? {
         get {
           return snapshot["votes"] as? Int
         }
         set {
           snapshot.updateValue(newValue, forKey: "votes")
-        }
-      }
-
-      public var author: Author? {
-        get {
-          return (snapshot["author"] as? Snapshot).flatMap { Author(snapshot: $0) }
-        }
-        set {
-          snapshot.updateValue(newValue?.snapshot, forKey: "author")
-        }
-      }
-
-      public var fragments: Fragments {
-        get {
-          return Fragments(snapshot: snapshot)
-        }
-        set {
-          snapshot += newValue.snapshot
-        }
-      }
-
-      public struct Fragments {
-        public var snapshot: Snapshot
-
-        public var postDetails: PostDetails {
-          get {
-            return PostDetails(snapshot: snapshot)
-          }
-          set {
-            snapshot += newValue.snapshot
-          }
-        }
-      }
-
-      public struct Author: GraphQLSelectionSet {
-        public static let possibleTypes = ["Author"]
-
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("firstName", type: .scalar(String.self)),
-          GraphQLField("lastName", type: .scalar(String.self)),
-        ]
-
-        public var snapshot: Snapshot
-
-        public init(snapshot: Snapshot) {
-          self.snapshot = snapshot
-        }
-
-        public init(firstName: String? = nil, lastName: String? = nil) {
-          self.init(snapshot: ["__typename": "Author", "firstName": firstName, "lastName": lastName])
-        }
-
-        public var __typename: String {
-          get {
-            return snapshot["__typename"]! as! String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var firstName: String? {
-          get {
-            return snapshot["firstName"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "firstName")
-          }
-        }
-
-        public var lastName: String? {
-          get {
-            return snapshot["lastName"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "lastName")
-          }
         }
       }
     }

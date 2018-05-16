@@ -10,6 +10,7 @@ fragment PostDetails on Post {
 
 mutation UpvotePost($postId: Int!) {
   upvotePost(postId: $postId) {
-    ...PostDetails
+    id
+    votes
   }
 }
