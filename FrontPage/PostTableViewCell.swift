@@ -13,7 +13,7 @@ class PostTableViewCell: UITableViewCell {
 
     titleLabel?.text = post.title
     bylineLabel?.text = byline(for: post)
-    votesLabel?.text = "\(post.votes ?? 0) votes"
+    votesLabel?.text = "\(post.votes ?? 0) vote\(post.votes == 1 ? "" : "s")"
   }
 
   @IBAction func upvote() {
