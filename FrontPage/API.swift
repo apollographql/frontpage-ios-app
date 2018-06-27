@@ -3,10 +3,10 @@
 import Apollo
 
 public final class AllPostsQuery: GraphQLQuery {
-  public static let operationString =
+  public let operationDefinition =
     "query AllPosts {\n  posts {\n    __typename\n    ...PostDetails\n  }\n}"
 
-  public static var requestString: String { return operationString.appending(PostDetails.fragmentString) }
+  public var queryDocument: String { return operationDefinition.appending(PostDetails.fragmentDefinition) }
 
   public init() {
   }
@@ -18,22 +18,22 @@ public final class AllPostsQuery: GraphQLQuery {
       GraphQLField("posts", type: .nonNull(.list(.nonNull(.object(Post.selections))))),
     ]
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public init(posts: [Post]) {
-      self.init(snapshot: ["__typename": "Query", "posts": posts.map { (value: Post) -> Snapshot in value.snapshot }])
+      self.init(unsafeResultMap: ["__typename": "Query", "posts": posts.map { (value: Post) -> ResultMap in value.resultMap }])
     }
 
     public var posts: [Post] {
       get {
-        return (snapshot["posts"] as! [Snapshot]).map { (value: Snapshot) -> Post in Post(snapshot: value) }
+        return (resultMap["posts"] as! [ResultMap]).map { (value: ResultMap) -> Post in Post(unsafeResultMap: value) }
       }
       set {
-        snapshot.updateValue(newValue.map { (value: Post) -> Snapshot in value.snapshot }, forKey: "posts")
+        resultMap.updateValue(newValue.map { (value: Post) -> ResultMap in value.resultMap }, forKey: "posts")
       }
     }
 
@@ -49,79 +49,83 @@ public final class AllPostsQuery: GraphQLQuery {
         GraphQLField("author", type: .object(Author.selections)),
       ]
 
-      public var snapshot: Snapshot
+      public private(set) var resultMap: ResultMap
 
-      public init(snapshot: Snapshot) {
-        self.snapshot = snapshot
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
 
       public init(id: Int, title: String? = nil, votes: Int? = nil, author: Author? = nil) {
-        self.init(snapshot: ["__typename": "Post", "id": id, "title": title, "votes": votes, "author": author.flatMap { (value: Author) -> Snapshot in value.snapshot }])
+        self.init(unsafeResultMap: ["__typename": "Post", "id": id, "title": title, "votes": votes, "author": author.flatMap { (value: Author) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
         get {
-          return snapshot["__typename"]! as! String
+          return resultMap["__typename"]! as! String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "__typename")
+          resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
       public var id: Int {
         get {
-          return snapshot["id"]! as! Int
+          return resultMap["id"]! as! Int
         }
         set {
-          snapshot.updateValue(newValue, forKey: "id")
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
       public var title: String? {
         get {
-          return snapshot["title"] as? String
+          return resultMap["title"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "title")
+          resultMap.updateValue(newValue, forKey: "title")
         }
       }
 
       public var votes: Int? {
         get {
-          return snapshot["votes"] as? Int
+          return resultMap["votes"] as? Int
         }
         set {
-          snapshot.updateValue(newValue, forKey: "votes")
+          resultMap.updateValue(newValue, forKey: "votes")
         }
       }
 
       public var author: Author? {
         get {
-          return (snapshot["author"] as? Snapshot).flatMap { Author(snapshot: $0) }
+          return (resultMap["author"] as? ResultMap).flatMap { Author(unsafeResultMap: $0) }
         }
         set {
-          snapshot.updateValue(newValue?.snapshot, forKey: "author")
+          resultMap.updateValue(newValue?.resultMap, forKey: "author")
         }
       }
 
       public var fragments: Fragments {
         get {
-          return Fragments(snapshot: snapshot)
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          snapshot += newValue.snapshot
+          resultMap += newValue.resultMap
         }
       }
 
       public struct Fragments {
-        public var snapshot: Snapshot
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
 
         public var postDetails: PostDetails {
           get {
-            return PostDetails(snapshot: snapshot)
+            return PostDetails(unsafeResultMap: resultMap)
           }
           set {
-            snapshot += newValue.snapshot
+            resultMap += newValue.resultMap
           }
         }
       }
@@ -135,40 +139,40 @@ public final class AllPostsQuery: GraphQLQuery {
           GraphQLField("lastName", type: .scalar(String.self)),
         ]
 
-        public var snapshot: Snapshot
+        public private(set) var resultMap: ResultMap
 
-        public init(snapshot: Snapshot) {
-          self.snapshot = snapshot
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
         }
 
         public init(firstName: String? = nil, lastName: String? = nil) {
-          self.init(snapshot: ["__typename": "Author", "firstName": firstName, "lastName": lastName])
+          self.init(unsafeResultMap: ["__typename": "Author", "firstName": firstName, "lastName": lastName])
         }
 
         public var __typename: String {
           get {
-            return snapshot["__typename"]! as! String
+            return resultMap["__typename"]! as! String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "__typename")
+            resultMap.updateValue(newValue, forKey: "__typename")
           }
         }
 
         public var firstName: String? {
           get {
-            return snapshot["firstName"] as? String
+            return resultMap["firstName"] as? String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "firstName")
+            resultMap.updateValue(newValue, forKey: "firstName")
           }
         }
 
         public var lastName: String? {
           get {
-            return snapshot["lastName"] as? String
+            return resultMap["lastName"] as? String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "lastName")
+            resultMap.updateValue(newValue, forKey: "lastName")
           }
         }
       }
@@ -177,7 +181,7 @@ public final class AllPostsQuery: GraphQLQuery {
 }
 
 public final class UpvotePostMutation: GraphQLMutation {
-  public static let operationString =
+  public let operationDefinition =
     "mutation UpvotePost($postId: Int!) {\n  upvotePost(postId: $postId) {\n    __typename\n    id\n    votes\n  }\n}"
 
   public var postId: Int
@@ -197,22 +201,22 @@ public final class UpvotePostMutation: GraphQLMutation {
       GraphQLField("upvotePost", arguments: ["postId": GraphQLVariable("postId")], type: .object(UpvotePost.selections)),
     ]
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public init(upvotePost: UpvotePost? = nil) {
-      self.init(snapshot: ["__typename": "Mutation", "upvotePost": upvotePost.flatMap { (value: UpvotePost) -> Snapshot in value.snapshot }])
+      self.init(unsafeResultMap: ["__typename": "Mutation", "upvotePost": upvotePost.flatMap { (value: UpvotePost) -> ResultMap in value.resultMap }])
     }
 
     public var upvotePost: UpvotePost? {
       get {
-        return (snapshot["upvotePost"] as? Snapshot).flatMap { UpvotePost(snapshot: $0) }
+        return (resultMap["upvotePost"] as? ResultMap).flatMap { UpvotePost(unsafeResultMap: $0) }
       }
       set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "upvotePost")
+        resultMap.updateValue(newValue?.resultMap, forKey: "upvotePost")
       }
     }
 
@@ -225,40 +229,40 @@ public final class UpvotePostMutation: GraphQLMutation {
         GraphQLField("votes", type: .scalar(Int.self)),
       ]
 
-      public var snapshot: Snapshot
+      public private(set) var resultMap: ResultMap
 
-      public init(snapshot: Snapshot) {
-        self.snapshot = snapshot
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
 
       public init(id: Int, votes: Int? = nil) {
-        self.init(snapshot: ["__typename": "Post", "id": id, "votes": votes])
+        self.init(unsafeResultMap: ["__typename": "Post", "id": id, "votes": votes])
       }
 
       public var __typename: String {
         get {
-          return snapshot["__typename"]! as! String
+          return resultMap["__typename"]! as! String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "__typename")
+          resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
       public var id: Int {
         get {
-          return snapshot["id"]! as! Int
+          return resultMap["id"]! as! Int
         }
         set {
-          snapshot.updateValue(newValue, forKey: "id")
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
       public var votes: Int? {
         get {
-          return snapshot["votes"] as? Int
+          return resultMap["votes"] as? Int
         }
         set {
-          snapshot.updateValue(newValue, forKey: "votes")
+          resultMap.updateValue(newValue, forKey: "votes")
         }
       }
     }
@@ -266,7 +270,7 @@ public final class UpvotePostMutation: GraphQLMutation {
 }
 
 public struct PostDetails: GraphQLFragment {
-  public static let fragmentString =
+  public static let fragmentDefinition =
     "fragment PostDetails on Post {\n  __typename\n  id\n  title\n  votes\n  author {\n    __typename\n    firstName\n    lastName\n  }\n}"
 
   public static let possibleTypes = ["Post"]
@@ -279,58 +283,58 @@ public struct PostDetails: GraphQLFragment {
     GraphQLField("author", type: .object(Author.selections)),
   ]
 
-  public var snapshot: Snapshot
+  public private(set) var resultMap: ResultMap
 
-  public init(snapshot: Snapshot) {
-    self.snapshot = snapshot
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
   }
 
   public init(id: Int, title: String? = nil, votes: Int? = nil, author: Author? = nil) {
-    self.init(snapshot: ["__typename": "Post", "id": id, "title": title, "votes": votes, "author": author.flatMap { (value: Author) -> Snapshot in value.snapshot }])
+    self.init(unsafeResultMap: ["__typename": "Post", "id": id, "title": title, "votes": votes, "author": author.flatMap { (value: Author) -> ResultMap in value.resultMap }])
   }
 
   public var __typename: String {
     get {
-      return snapshot["__typename"]! as! String
+      return resultMap["__typename"]! as! String
     }
     set {
-      snapshot.updateValue(newValue, forKey: "__typename")
+      resultMap.updateValue(newValue, forKey: "__typename")
     }
   }
 
   public var id: Int {
     get {
-      return snapshot["id"]! as! Int
+      return resultMap["id"]! as! Int
     }
     set {
-      snapshot.updateValue(newValue, forKey: "id")
+      resultMap.updateValue(newValue, forKey: "id")
     }
   }
 
   public var title: String? {
     get {
-      return snapshot["title"] as? String
+      return resultMap["title"] as? String
     }
     set {
-      snapshot.updateValue(newValue, forKey: "title")
+      resultMap.updateValue(newValue, forKey: "title")
     }
   }
 
   public var votes: Int? {
     get {
-      return snapshot["votes"] as? Int
+      return resultMap["votes"] as? Int
     }
     set {
-      snapshot.updateValue(newValue, forKey: "votes")
+      resultMap.updateValue(newValue, forKey: "votes")
     }
   }
 
   public var author: Author? {
     get {
-      return (snapshot["author"] as? Snapshot).flatMap { Author(snapshot: $0) }
+      return (resultMap["author"] as? ResultMap).flatMap { Author(unsafeResultMap: $0) }
     }
     set {
-      snapshot.updateValue(newValue?.snapshot, forKey: "author")
+      resultMap.updateValue(newValue?.resultMap, forKey: "author")
     }
   }
 
@@ -343,40 +347,40 @@ public struct PostDetails: GraphQLFragment {
       GraphQLField("lastName", type: .scalar(String.self)),
     ]
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public init(firstName: String? = nil, lastName: String? = nil) {
-      self.init(snapshot: ["__typename": "Author", "firstName": firstName, "lastName": lastName])
+      self.init(unsafeResultMap: ["__typename": "Author", "firstName": firstName, "lastName": lastName])
     }
 
     public var __typename: String {
       get {
-        return snapshot["__typename"]! as! String
+        return resultMap["__typename"]! as! String
       }
       set {
-        snapshot.updateValue(newValue, forKey: "__typename")
+        resultMap.updateValue(newValue, forKey: "__typename")
       }
     }
 
     public var firstName: String? {
       get {
-        return snapshot["firstName"] as? String
+        return resultMap["firstName"] as? String
       }
       set {
-        snapshot.updateValue(newValue, forKey: "firstName")
+        resultMap.updateValue(newValue, forKey: "firstName")
       }
     }
 
     public var lastName: String? {
       get {
-        return snapshot["lastName"] as? String
+        return resultMap["lastName"] as? String
       }
       set {
-        snapshot.updateValue(newValue, forKey: "lastName")
+        resultMap.updateValue(newValue, forKey: "lastName")
       }
     }
   }

@@ -7,84 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		618A0697D2E17B2DB176DE7D /* Pods_FrontPage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79834A5F2BAB609552638617 /* Pods_FrontPage.framework */; };
 		9F12A39120AC5A310097DC1B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F12A38C20AC5A300097DC1B /* API.swift */; };
 		9F12A39220AC5A310097DC1B /* PostTableViewCell.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9F12A38D20AC5A300097DC1B /* PostTableViewCell.graphql */; };
 		9F12A39320AC5A310097DC1B /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F12A38E20AC5A300097DC1B /* PostListViewController.swift */; };
 		9F12A39420AC5A310097DC1B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F12A38F20AC5A300097DC1B /* PostTableViewCell.swift */; };
 		9F12A39520AC5A310097DC1B /* PostListViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 9F12A39020AC5A310097DC1B /* PostListViewController.graphql */; };
-		9F12A3B120AC5ACB0097DC1B /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F12A3A220AC5A860097DC1B /* Apollo.framework */; };
-		9F12A3B220AC5ACB0097DC1B /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F12A3A220AC5A860097DC1B /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F5B107520AC57D100BAE436 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5B107420AC57D100BAE436 /* AppDelegate.swift */; };
 		9F5B107A20AC57D100BAE436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5B107820AC57D100BAE436 /* Main.storyboard */; };
 		9F5B107C20AC57D200BAE436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F5B107B20AC57D200BAE436 /* Assets.xcassets */; };
 		9F5B107F20AC57D200BAE436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F5B107D20AC57D200BAE436 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9F12A3A120AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FC750441D2A532C00458D91;
-			remoteInfo = Apollo;
-		};
-		9F12A3A320AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FC7504E1D2A532D00458D91;
-			remoteInfo = ApolloTests;
-		};
-		9F12A3A520AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FA6ABBC1EC0A988000017BE;
-			remoteInfo = ApolloCacheDependentTests;
-		};
-		9F12A3A720AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FC631331E6AE2080062707E;
-			remoteInfo = ApolloPerformanceTests;
-		};
-		9F12A3A920AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FCE2CFA1E6C213D00E34457;
-			remoteInfo = StarWarsAPI;
-		};
-		9F12A3AB20AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FACA9C61F42E67200AE2DBD;
-			remoteInfo = GitHubAPI;
-		};
-		9F12A3AD20AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9FD637E11E6ACF88001EDBC8;
-			remoteInfo = "TestHost iOS";
-		};
-		9F12A3AF20AC5A860097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9F8A95781EC0FC1200304A2D;
-			remoteInfo = ApolloTestSupport;
-		};
-		9F12A3B320AC5ACB0097DC1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9FC750431D2A532C00458D91;
-			remoteInfo = Apollo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9F12A3B520AC5ACB0097DC1B /* Embed Frameworks */ = {
@@ -93,7 +26,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9F12A3B220AC5ACB0097DC1B /* Apollo.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,12 +33,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		530175793A47602FFA35560B /* Pods-FrontPage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrontPage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrontPage/Pods-FrontPage.release.xcconfig"; sourceTree = "<group>"; };
+		6972FD3A127F23953FA4CF6E /* Pods-FrontPage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrontPage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrontPage/Pods-FrontPage.debug.xcconfig"; sourceTree = "<group>"; };
+		79834A5F2BAB609552638617 /* Pods_FrontPage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontPage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F12A38C20AC5A300097DC1B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9F12A38D20AC5A300097DC1B /* PostTableViewCell.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PostTableViewCell.graphql; sourceTree = "<group>"; };
 		9F12A38E20AC5A300097DC1B /* PostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		9F12A38F20AC5A300097DC1B /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9F12A39020AC5A310097DC1B /* PostListViewController.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PostListViewController.graphql; sourceTree = "<group>"; };
-		9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Apollo.xcodeproj; path = "Carthage/Checkouts/apollo-ios/Apollo.xcodeproj"; sourceTree = "<group>"; };
 		9F5B107120AC57D100BAE436 /* FrontPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrontPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5B107420AC57D100BAE436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F5B107920AC57D100BAE436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,34 +54,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F12A3B120AC5ACB0097DC1B /* Apollo.framework in Frameworks */,
+				618A0697D2E17B2DB176DE7D /* Pods_FrontPage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F12A39720AC5A860097DC1B /* Products */ = {
+		5C7C4B6BBAB93599EB5D3699 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9F12A3A220AC5A860097DC1B /* Apollo.framework */,
-				9F12A3A420AC5A860097DC1B /* ApolloTests.xctest */,
-				9F12A3A620AC5A860097DC1B /* ApolloCacheDependentTests.xctest */,
-				9F12A3A820AC5A860097DC1B /* ApolloPerformanceTests.xctest */,
-				9F12A3AA20AC5A860097DC1B /* StarWarsAPI.framework */,
-				9F12A3AC20AC5A860097DC1B /* GitHubAPI.framework */,
-				9F12A3AE20AC5A860097DC1B /* TestHost iOS.app */,
-				9F12A3B020AC5A860097DC1B /* ApolloTestSupport.framework */,
+				6972FD3A127F23953FA4CF6E /* Pods-FrontPage.debug.xcconfig */,
+				530175793A47602FFA35560B /* Pods-FrontPage.release.xcconfig */,
 			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		9F5B106820AC57D100BAE436 = {
 			isa = PBXGroup;
 			children = (
-				9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */,
 				9F5B107320AC57D100BAE436 /* FrontPage */,
 				9F5B107220AC57D100BAE436 /* Products */,
+				5C7C4B6BBAB93599EB5D3699 /* Pods */,
+				A18FDB17A98B853AA7E2EE1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +105,14 @@
 			path = FrontPage;
 			sourceTree = "<group>";
 		};
+		A18FDB17A98B853AA7E2EE1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79834A5F2BAB609552638617 /* Pods_FrontPage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -183,16 +120,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F5B108320AC57D200BAE436 /* Build configuration list for PBXNativeTarget "FrontPage" */;
 			buildPhases = (
+				85C9A6C97FF886F1EAE894BF /* [CP] Check Pods Manifest.lock */,
 				9F12A3B620AC5B7E0097DC1B /* Generate Apollo GraphQL API */,
 				9F5B106D20AC57D100BAE436 /* Sources */,
 				9F5B106E20AC57D100BAE436 /* Frameworks */,
 				9F5B106F20AC57D100BAE436 /* Resources */,
 				9F12A3B520AC5ACB0097DC1B /* Embed Frameworks */,
+				3D99F8228785282A1959B384 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9F12A3B420AC5ACB0097DC1B /* PBXTargetDependency */,
 			);
 			name = FrontPage;
 			productName = FrontPage;
@@ -225,77 +163,12 @@
 			mainGroup = 9F5B106820AC57D100BAE436;
 			productRefGroup = 9F5B107220AC57D100BAE436 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 9F12A39720AC5A860097DC1B /* Products */;
-					ProjectRef = 9F12A39620AC5A860097DC1B /* Apollo.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				9F5B107020AC57D100BAE436 /* FrontPage */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		9F12A3A220AC5A860097DC1B /* Apollo.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Apollo.framework;
-			remoteRef = 9F12A3A120AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9F12A3A420AC5A860097DC1B /* ApolloTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ApolloTests.xctest;
-			remoteRef = 9F12A3A320AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9F12A3A620AC5A860097DC1B /* ApolloCacheDependentTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ApolloCacheDependentTests.xctest;
-			remoteRef = 9F12A3A520AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9F12A3A820AC5A860097DC1B /* ApolloPerformanceTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ApolloPerformanceTests.xctest;
-			remoteRef = 9F12A3A720AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9F12A3AA20AC5A860097DC1B /* StarWarsAPI.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = StarWarsAPI.framework;
-			remoteRef = 9F12A3A920AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9F12A3AC20AC5A860097DC1B /* GitHubAPI.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GitHubAPI.framework;
-			remoteRef = 9F12A3AB20AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9F12A3AE20AC5A860097DC1B /* TestHost iOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "TestHost iOS.app";
-			remoteRef = 9F12A3AD20AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9F12A3B020AC5A860097DC1B /* ApolloTestSupport.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ApolloTestSupport.framework;
-			remoteRef = 9F12A3AF20AC5A860097DC1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9F5B106F20AC57D100BAE436 /* Resources */ = {
@@ -313,6 +186,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3D99F8228785282A1959B384 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FrontPage/Pods-FrontPage-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrontPage/Pods-FrontPage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85C9A6C97FF886F1EAE894BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FrontPage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9F12A3B620AC5B7E0097DC1B /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,14 +251,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9F12A3B420AC5ACB0097DC1B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Apollo;
-			targetProxy = 9F12A3B320AC5ACB0097DC1B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9F5B107820AC57D100BAE436 /* Main.storyboard */ = {
@@ -487,8 +388,8 @@
 		};
 		9F5B108420AC57D200BAE436 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6972FD3A127F23953FA4CF6E /* Pods-FrontPage.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FrontPage/Info.plist;
@@ -505,8 +406,8 @@
 		};
 		9F5B108520AC57D200BAE436 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 530175793A47602FFA35560B /* Pods-FrontPage.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FrontPage/Info.plist;

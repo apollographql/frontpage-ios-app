@@ -1,6 +1,0 @@
-[submodule "Carthage/Checkouts/apollo-ios"]
-	path = Carthage/Checkouts/apollo-ios
-	url = https://github.com/apollographql/apollo-ios.git
-[submodule "Carthage/Checkouts/SQLite.swift"]
-	path = Carthage/Checkouts/SQLite.swift
-	url = https://github.com/stephencelis/SQLite.swift.git
