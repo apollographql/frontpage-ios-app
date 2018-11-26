@@ -18,7 +18,7 @@ This app talks to the frontpage example server, available here: https://github.c
 
 ## Starting the app
 
-You can then open `FrontPage.xcodeproj` and press the run button to run the app. It should load a list of posts and display their titles, authors and number of votes in a table view. You can also upvote posts.
+You can then open `FrontPage.xcworkspace` and press the run button to run the app. It should load a list of posts and display their titles, authors and number of votes in a table view. You can also upvote posts.
 
 If you want to run on a device, change `localhost` to your machine's local IP address in `AppDelegate.swift`.
 
