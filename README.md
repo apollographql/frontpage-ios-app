@@ -16,6 +16,15 @@ git clone --recursive https://github.com/apollographql/frontpage-ios-app.git
 
 This app talks to the frontpage example server, available here: https://github.com/apollographql/frontpage-server. Follow the instructions there and start the server before running the iOS app. (You can find the equivalent React app [here](https://github.com/apollographql/frontpage-react-app) if you want to run them side by side.)
 
+
+### Dependencies 
+
+Make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html) and then run:
+
+```sh
+pod install
+```
+
 ## Starting the app
 
 You can then open `FrontPage.xcworkspace` and press the run button to run the app. It should load a list of posts and display their titles, authors and number of votes in a table view. You can also upvote posts.
