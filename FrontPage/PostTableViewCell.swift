@@ -18,9 +18,12 @@ class PostTableViewCell: UITableViewCell {
 
   @IBAction func upvote() {
     guard let postId = postId else { return }
-
-    apollo.perform(mutation: UpvotePostMutation(postId: postId)) { (result, error) in
-      if let error = error {
+    
+    apollo.perform(mutation: UpvotePostMutation(postId: postId)) { result in
+      switch result {
+      case .success:
+        break
+      case .failure(let error):
         NSLog("Error while attempting to upvote post: \(error.localizedDescription)")
       }
     }
