@@ -12,9 +12,9 @@ To clone the Git repository to your local machine, including submodules:
 git clone --recursive https://github.com/apollographql/frontpage-ios-app.git
 ```
 
-### Cocoapods
+### Dependencies 
 
-Installation Apollo through Cocoapods:
+Make sure you have [CocoaPods installed](https://guides.cocoapods.org/using/getting-started.html) and then run:
 
 ```sh
 pod install
@@ -23,6 +23,7 @@ pod install
 ### Server
 
 This app talks to the frontpage example server, available here: https://github.com/apollographql/frontpage-server. Follow the instructions there and start the server before running the iOS app. (You can find the equivalent React app [here](https://github.com/apollographql/frontpage-react-app) if you want to run them side by side.)
+
 
 ## Starting the app
 
