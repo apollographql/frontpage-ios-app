@@ -3,8 +3,14 @@
 import Apollo
 
 public final class AllPostsQuery: GraphQLQuery {
+  /// query AllPosts {
+  ///   posts {
+  ///     __typename
+  ///     ...PostDetails
+  ///   }
+  /// }
   public let operationDefinition =
-    "query AllPosts {\n  posts {\n    __typename\n    ...PostDetails\n  }\n}"
+    "query AllPosts { posts { __typename ...PostDetails } }"
 
   public let operationName = "AllPosts"
 
@@ -92,8 +98,15 @@ public final class AllPostsQuery: GraphQLQuery {
 }
 
 public final class UpvotePostMutation: GraphQLMutation {
+  /// mutation UpvotePost($postId: Int!) {
+  ///   upvotePost(postId: $postId) {
+  ///     __typename
+  ///     id
+  ///     votes
+  ///   }
+  /// }
   public let operationDefinition =
-    "mutation UpvotePost($postId: Int!) {\n  upvotePost(postId: $postId) {\n    __typename\n    id\n    votes\n  }\n}"
+    "mutation UpvotePost($postId: Int!) { upvotePost(postId: $postId) { __typename id votes } }"
 
   public let operationName = "UpvotePost"
 
@@ -183,8 +196,19 @@ public final class UpvotePostMutation: GraphQLMutation {
 }
 
 public struct PostDetails: GraphQLFragment {
+  /// fragment PostDetails on Post {
+  ///   __typename
+  ///   id
+  ///   title
+  ///   votes
+  ///   author {
+  ///     __typename
+  ///     firstName
+  ///     lastName
+  ///   }
+  /// }
   public static let fragmentDefinition =
-    "fragment PostDetails on Post {\n  __typename\n  id\n  title\n  votes\n  author {\n    __typename\n    firstName\n    lastName\n  }\n}"
+    "fragment PostDetails on Post { __typename id title votes author { __typename firstName lastName } }"
 
   public static let possibleTypes = ["Post"]
 
