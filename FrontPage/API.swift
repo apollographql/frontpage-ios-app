@@ -1,16 +1,19 @@
 //  This file was automatically generated and should not be edited.
 
 import Apollo
+import Foundation
 
 public final class AllPostsQuery: GraphQLQuery {
-  /// query AllPosts {
-  ///   posts {
-  ///     __typename
-  ///     ...PostDetails
-  ///   }
-  /// }
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "query AllPosts { posts { __typename ...PostDetails } }"
+    """
+    query AllPosts {
+      posts {
+        __typename
+        ...PostDetails
+      }
+    }
+    """
 
   public let operationName = "AllPosts"
 
@@ -98,15 +101,17 @@ public final class AllPostsQuery: GraphQLQuery {
 }
 
 public final class UpvotePostMutation: GraphQLMutation {
-  /// mutation UpvotePost($postId: Int!) {
-  ///   upvotePost(postId: $postId) {
-  ///     __typename
-  ///     id
-  ///     votes
-  ///   }
-  /// }
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "mutation UpvotePost($postId: Int!) { upvotePost(postId: $postId) { __typename id votes } }"
+    """
+    mutation UpvotePost($postId: Int!) {
+      upvotePost(postId: $postId) {
+        __typename
+        id
+        votes
+      }
+    }
+    """
 
   public let operationName = "UpvotePost"
 
@@ -196,19 +201,21 @@ public final class UpvotePostMutation: GraphQLMutation {
 }
 
 public struct PostDetails: GraphQLFragment {
-  /// fragment PostDetails on Post {
-  ///   __typename
-  ///   id
-  ///   title
-  ///   votes
-  ///   author {
-  ///     __typename
-  ///     firstName
-  ///     lastName
-  ///   }
-  /// }
+  /// The raw GraphQL definition of this fragment.
   public static let fragmentDefinition =
-    "fragment PostDetails on Post { __typename id title votes author { __typename firstName lastName } }"
+    """
+    fragment PostDetails on Post {
+      __typename
+      id
+      title
+      votes
+      author {
+        __typename
+        firstName
+        lastName
+      }
+    }
+    """
 
   public static let possibleTypes = ["Post"]
 
