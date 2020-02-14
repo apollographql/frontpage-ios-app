@@ -1,3 +1,4 @@
+// @generated
 //  This file was automatically generated and should not be edited.
 
 import Apollo
@@ -5,7 +6,7 @@ import Foundation
 
 public final class AllPostsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     query AllPosts {
       posts {
@@ -15,7 +16,7 @@ public final class AllPostsQuery: GraphQLQuery {
     }
     """
 
-  public let operationName = "AllPosts"
+  public let operationName: String = "AllPosts"
 
   public var queryDocument: String { return operationDefinition.appending(PostDetails.fragmentDefinition) }
 
@@ -23,7 +24,7 @@ public final class AllPostsQuery: GraphQLQuery {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Query"]
+    public static let possibleTypes: [String] = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("posts", type: .nonNull(.list(.nonNull(.object(Post.selections))))),
@@ -49,7 +50,7 @@ public final class AllPostsQuery: GraphQLQuery {
     }
 
     public struct Post: GraphQLSelectionSet {
-      public static let possibleTypes = ["Post"]
+      public static let possibleTypes: [String] = ["Post"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -102,7 +103,7 @@ public final class AllPostsQuery: GraphQLQuery {
 
 public final class UpvotePostMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation UpvotePost($postId: Int!) {
       upvotePost(postId: $postId) {
@@ -113,7 +114,7 @@ public final class UpvotePostMutation: GraphQLMutation {
     }
     """
 
-  public let operationName = "UpvotePost"
+  public let operationName: String = "UpvotePost"
 
   public var postId: Int
 
@@ -126,7 +127,7 @@ public final class UpvotePostMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Mutation"]
+    public static let possibleTypes: [String] = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("upvotePost", arguments: ["postId": GraphQLVariable("postId")], type: .object(UpvotePost.selections)),
@@ -152,7 +153,7 @@ public final class UpvotePostMutation: GraphQLMutation {
     }
 
     public struct UpvotePost: GraphQLSelectionSet {
-      public static let possibleTypes = ["Post"]
+      public static let possibleTypes: [String] = ["Post"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -202,7 +203,7 @@ public final class UpvotePostMutation: GraphQLMutation {
 
 public struct PostDetails: GraphQLFragment {
   /// The raw GraphQL definition of this fragment.
-  public static let fragmentDefinition =
+  public static let fragmentDefinition: String =
     """
     fragment PostDetails on Post {
       __typename
@@ -217,7 +218,7 @@ public struct PostDetails: GraphQLFragment {
     }
     """
 
-  public static let possibleTypes = ["Post"]
+  public static let possibleTypes: [String] = ["Post"]
 
   public static let selections: [GraphQLSelection] = [
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -283,7 +284,7 @@ public struct PostDetails: GraphQLFragment {
   }
 
   public struct Author: GraphQLSelectionSet {
-    public static let possibleTypes = ["Author"]
+    public static let possibleTypes: [String] = ["Author"]
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
