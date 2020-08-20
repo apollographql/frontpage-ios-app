@@ -18,7 +18,7 @@ public final class AllPostsQuery: GraphQLQuery {
 
   public let operationName: String = "AllPosts"
 
-  public var queryDocument: String { return operationDefinition.appending(PostDetails.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending("\n" + PostDetails.fragmentDefinition) }
 
   public init() {
   }
@@ -26,9 +26,11 @@ public final class AllPostsQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("posts", type: .nonNull(.list(.nonNull(.object(Post.selections))))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("posts", type: .nonNull(.list(.nonNull(.object(Post.selections))))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -52,10 +54,12 @@ public final class AllPostsQuery: GraphQLQuery {
     public struct Post: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Post"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLFragmentSpread(PostDetails.self),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(PostDetails.self),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -129,9 +133,11 @@ public final class UpvotePostMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Mutation"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("upvotePost", arguments: ["postId": GraphQLVariable("postId")], type: .object(UpvotePost.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("upvotePost", arguments: ["postId": GraphQLVariable("postId")], type: .object(UpvotePost.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -155,11 +161,13 @@ public final class UpvotePostMutation: GraphQLMutation {
     public struct UpvotePost: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Post"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("votes", type: .scalar(Int.self)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("votes", type: .scalar(Int.self)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -220,13 +228,15 @@ public struct PostDetails: GraphQLFragment {
 
   public static let possibleTypes: [String] = ["Post"]
 
-  public static let selections: [GraphQLSelection] = [
-    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-    GraphQLField("id", type: .nonNull(.scalar(Int.self))),
-    GraphQLField("title", type: .scalar(String.self)),
-    GraphQLField("votes", type: .scalar(Int.self)),
-    GraphQLField("author", type: .object(Author.selections)),
-  ]
+  public static var selections: [GraphQLSelection] {
+    return [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("title", type: .scalar(String.self)),
+      GraphQLField("votes", type: .scalar(Int.self)),
+      GraphQLField("author", type: .object(Author.selections)),
+    ]
+  }
 
   public private(set) var resultMap: ResultMap
 
@@ -286,11 +296,13 @@ public struct PostDetails: GraphQLFragment {
   public struct Author: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Author"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-      GraphQLField("firstName", type: .scalar(String.self)),
-      GraphQLField("lastName", type: .scalar(String.self)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("firstName", type: .scalar(String.self)),
+        GraphQLField("lastName", type: .scalar(String.self)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
