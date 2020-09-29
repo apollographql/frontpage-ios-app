@@ -1,5 +1,13 @@
 # Apollo iOS Hello World app
 
+## DEPRECATION NOTICE
+
+This sample is deprecated as of September 2020. 
+
+Please see [the current Apollo iOS Tutorial](https://www.apollographql.com/docs/ios/tutorial) for the most recent sample app that uses all the new shiny. 
+
+## Olde Instructions: 
+
 This is a simple example Apollo iOS app.
 
 ## Installation
